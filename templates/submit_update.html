@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit PHC Update</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #003366, #004080, #1e90ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Glassmorphism Form Container */
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+            text-align: center;
+        }
+
+        /* Heading Styling */
+        h2 {
+            color: #1e90ff;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Input Styling */
+        .form-control {
+            width: 100%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #1e90ff;
+        }
+
+        /* Button Styling */
+        .btn-custom {
+            background: #1e90ff;
+            border: none;
+            color: #fff;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-custom:hover {
+            background: #004080;
+            transform: scale(1.05);
+        }
+
+        /* View Dashboard Button */
+        .btn-secondary {
+            display: block;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            color: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Toggle Buttons */
+        .toggle-btn {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .toggle-btn button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #1e90ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-btn button:hover {
+            background: #004080;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-btn">&larr; Back</a>
+
+    <div class="form-container">
+        <div class="toggle-btn">
+            <button onclick="showForm('patient-form')">Submit Patient Data</button>
+            <button onclick="showForm('daily-form')">Submit Daily Update</button>
+        </div>
+
+        <!-- Patient Data Form -->
+        <div id="patient-form">
+            <h2>Submit Patient Data</h2>
+            <form method="POST">
+                <input type="text" name="patient_name" class="form-control" placeholder="Patient Name" required>
+                <input type="number" name="age" class="form-control" placeholder="Age" required>
+                <input type="tel" name="phno" class="form-control" placeholder="Phone Number" required>
+                <textarea name="diagnosis" class="form-control" placeholder="Diagnosis"></textarea>
+                <textarea name="treatment" class="form-control" placeholder="Treatment Provided"></textarea>
+                <button type="submit" class="btn-custom">Submit Patient Data</button>
+            </form>
+        </div>
+
+        <!-- Daily Update Form (Initially Hidden) -->
+        <div id="daily-form" style="display: none;">
+            <h2>Submit PHC Daily Update</h2>
+            <form method="POST">
+                <input type="text" name="phc_name" class="form-control" placeholder="PHC Name" required>
+                <input type="number" name="patient_count" class="form-control" placeholder="Patient Count" required>
+                <textarea name="diagnosis" class="form-control" placeholder="Diagnosis"></textarea>
+                <textarea name="treatment" class="form-control" placeholder="Treatment Provided"></textarea>
+                <button type="submit" class="btn-custom">Submit Update</button>
+            </form>
+        </div>
+
+        <a href="{{ url_for('dashboard') }}" class="btn-secondary">View Dashboard</a>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            document.getElementById('patient-form').style.display = (formId === 'patient-form') ? 'block' : 'none';
+            document.getElementById('daily-form').style.display = (formId === 'daily-form') ? 'block' : 'none';
+        }
+    
+    </script>
+</body>
+</html>

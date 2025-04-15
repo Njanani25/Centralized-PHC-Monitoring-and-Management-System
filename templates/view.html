@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Healthcare Monitoring System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            background: #ff6f61;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: 0.3s ease-in-out;
+            display: inline-block;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #ff3b2f;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 59, 47, 0.4);
+        }
+
+        .top-right-button {
+            background: #4caf50;
+            border: none;
+            padding: 12px 24px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            min-width: 150px;
+        }
+
+        .top-right-button:hover {
+            background: #388e3c;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(56, 142, 60, 0.4);
+        }
+
+        /* Subtle floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .container {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-btn">← Back</a>
+    <div class="container">
+        <h2>Automated Healthcare Monitoring</h2>
+        <p>Track and manage healthcare attendance with ease using our advanced detection system.</p>
+        <div class="btn-container">
+            <form action="/detect" method="post">
+                <button type="submit" class="btn">Start Detection</button>
+            </form>
+            <a href="/attendance" class="btn">View Attendance</a>
+            <button class="top-right-button" onclick="window.location.href='/submit_update'">PHC Monitoring</button>
+        </div>
+    </div>
+</body>
+</html>
